@@ -51,6 +51,53 @@ fruitTypes.forEach(fruit => {
   fruitRow.appendChild(btn);
 });
 
+// Plant image mapping
+const plantImages = {
+  carrot: "img/carrot.png",
+  strawberry: "img/strawberry.png",
+  blueberry: "img/blueberry.png",
+  orangetulip: "img/orangetulip.png",
+  tomato: "img/tomato.png",
+  corn: "img/corn.png",
+  daffodil: "img/daffodil.png",
+  watermelon: "img/watermelon.png",
+  pumpkin: "img/pumpkin.png",
+  apple: "img/apple.png",
+  bamboo: "img/bamboo.png",
+  coconut: "img/coconut.png",
+  cactus: "img/cactus.png",
+  dragonfruit: "img/dragonfruit.png",
+  mango: "img/mango.png",
+  grape: "img/grape.png",
+  mushroom: "img/mushroom.png",
+  pepper: "img/pepper.png",
+  cacao: "img/cacao.png",
+  beanstalk: "img/beanstalk.png",
+  nightshade: "img/nightshade.png",
+  mint: "img/mint.png",
+  glowshroom: "img/glowshroom.png",
+  moonmelon: "img/moonmelon.png",
+  starfruit: "img/starfruit.png",
+  moonflower: "img/moonflower.png",
+  bloodbanana: "img/bloodbanana.png",
+  moonglow: "img/moonglow.png",
+  moonblossom: "img/moonblossom.png",
+  celestiberry: "img/celestiberry.png",
+  moonmango: "img/moonmango.png",
+  candyblossom: "img/candyblossom.png",
+  easteregg: "img/easteregg.png",
+  raspberry: "img/raspberry.png",
+  pear: "img/pear.png",
+  peach: "img/peach.png",
+  cranberry: "img/cranberry.png",
+  durian: "img/durian.png",
+  eggplant: "img/eggplant.png",
+  papaya: "img/papaya.png",
+  banana: "img/banana.png",
+  passionfruit: "img/passionfruit.png",
+  soulfruit: "img/soulfruit.png"
+};
+
 // Dynamically build plant categories as button groups (not checkboxes)
 const categoryContainer = document.getElementById('categoryContainer');
 const plantIds = [];
@@ -68,7 +115,11 @@ Object.entries(categories).forEach(([title, ids]) => {
     btn.type = 'button';
     btn.className = 'plant-btn';
     btn.id = `plantbtn-${id}`;
-    btn.textContent = id.charAt(0).toUpperCase() + id.slice(1);
+    // Plant image and label
+    const imgSrc = plantImages[id];
+    btn.innerHTML = imgSrc
+      ? `<img src="${imgSrc}" alt="${id}" class="plant-img"/><div class="plant-label">${id.charAt(0).toUpperCase() + id.slice(1)}</div>`
+      : `<div class="plant-label">${id.charAt(0).toUpperCase() + id.slice(1)}</div>`;
     btn.onclick = () => togglePlantBtn(id);
     btnWrap.appendChild(btn);
   });
@@ -400,8 +451,11 @@ window.onload = calculateValue;
 const style = document.createElement('style');
 style.innerHTML = `
 .plant-btn {
-  display: inline-block;
-  padding: 8px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 10px 6px 10px;
   margin: 4px 8px 4px 0;
   border-radius: 18px;
   background: #232634;
@@ -414,8 +468,27 @@ style.innerHTML = `
   user-select: none;
   outline: none;
   min-width: 90px;
+  min-height: 90px;
   text-align: center;
   box-shadow: 0 1px 6px #0002;
+}
+.plant-btn .plant-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 4px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+.plant-btn .plant-label {
+  font-size: 0.98em;
+  margin-top: 2px;
+  color: inherit;
+  font-weight: 500;
+  text-shadow: 0 1px 4px #0003;
+  pointer-events: none;
+  user-select: none;
 }
 .plant-btn.active {
   background: var(--primary, #7f9cff);

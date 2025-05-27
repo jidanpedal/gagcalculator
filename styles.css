@@ -241,6 +241,24 @@ button:hover, .mod-btn:hover, .fruit-btn:hover {
 #modifiers .checkbox, .fruit-row .checkbox {
   display: none !important;
 }
+.plant-btn .plant-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 4px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+.plant-btn .plant-label {
+  font-size: 0.98em;
+  margin-top: 2px;
+  color: inherit;
+  font-weight: 500;
+  text-shadow: 0 1px 4px #0003;
+  pointer-events: none;
+  user-select: none;
+}
 @media (max-width: 700px) {
   .container { padding: 10px 2vw; }
   .category { min-width: 120px; }
