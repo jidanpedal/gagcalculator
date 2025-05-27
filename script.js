@@ -98,6 +98,53 @@ const plantImages = {
   soulfruit: "img/soulfruit.png"
 };
 
+// Plant label mapping (pretty names)
+const plantLabels = {
+  carrot: "Carrot",
+  strawberry: "Strawberry",
+  blueberry: "Blueberry",
+  orangetulip: "Orange Tulip",
+  tomato: "Tomato",
+  corn: "Corn",
+  daffodil: "Daffodil",
+  watermelon: "Watermelon",
+  pumpkin: "Pumpkin",
+  apple: "Apple",
+  bamboo: "Bamboo",
+  coconut: "Coconut",
+  cactus: "Cactus",
+  dragonfruit: "Dragon Fruit",
+  mango: "Mango",
+  grape: "Grape",
+  mushroom: "Mushroom",
+  pepper: "Pepper",
+  cacao: "Cacao",
+  beanstalk: "Beanstalk",
+  nightshade: "Nightshade",
+  mint: "Mint",
+  glowshroom: "Glowshroom",
+  moonmelon: "Moon Melon",
+  starfruit: "Star Fruit",
+  moonflower: "Moon Flower",
+  bloodbanana: "Blood Banana",
+  moonglow: "Moonglow",
+  moonblossom: "Moon Blossom",
+  celestiberry: "Celestiberry",
+  moonmango: "Moon Mango",
+  candyblossom: "Candy Blossom",
+  easteregg: "Easter Egg",
+  raspberry: "Raspberry",
+  pear: "Pear",
+  peach: "Peach",
+  cranberry: "Cranberry",
+  durian: "Durian",
+  eggplant: "Eggplant",
+  papaya: "Papaya",
+  banana: "Banana",
+  passionfruit: "Passionfruit",
+  soulfruit: "Soul Fruit"
+};
+
 // Dynamically build plant categories as button groups (not checkboxes)
 const categoryContainer = document.getElementById('categoryContainer');
 const plantIds = [];
@@ -117,9 +164,10 @@ Object.entries(categories).forEach(([title, ids]) => {
     btn.id = `plantbtn-${id}`;
     // Plant image and label
     const imgSrc = plantImages[id];
+    const label = plantLabels[id] || (id.charAt(0).toUpperCase() + id.slice(1));
     btn.innerHTML = imgSrc
-      ? `<img src="${imgSrc}" alt="${id}" class="plant-img"/><div class="plant-label">${id.charAt(0).toUpperCase() + id.slice(1)}</div>`
-      : `<div class="plant-label">${id.charAt(0).toUpperCase() + id.slice(1)}</div>`;
+      ? `<img src="${imgSrc}" alt="${label}" class="plant-img"/><div class="plant-label">${label}</div>`
+      : `<div class="plant-label">${label}</div>`;
     btn.onclick = () => togglePlantBtn(id);
     btnWrap.appendChild(btn);
   });
